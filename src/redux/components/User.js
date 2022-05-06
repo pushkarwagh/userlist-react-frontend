@@ -29,7 +29,7 @@ function User() {
         </div>
 
         <div style={{ marginBlock: "auto" }}>
-          {state.leadId === 0 ? (
+          {state.leadId == 0 ? (
             <Link to={`/addUser/${state._id}`} state={{ data: state.name }}>
               <button className="btn btn-primary my-1 shadow">
                 <ImUserPlus size={20} /> User
