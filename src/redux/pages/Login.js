@@ -114,7 +114,7 @@ function Login() {
           </div>
           <input
             style={{ width: "-webkit-fill-available" }}
-            className="input"
+            className="form-control input"
             type="email"
             placeholder="Email"
             name="email"
@@ -137,7 +137,7 @@ function Login() {
           </div>
           <input
             style={{ width: "-webkit-fill-available" }}
-            className="input"
+            className="form-control input"
             type="password"
             placeholder="Password"
             name="password"

@@ -107,7 +107,7 @@ function AddUser() {
           </div>
           <input
             style={{ width: "-webkit-fill-available" }}
-            className="input border-2px-danger round"
+            className="form-control input border-2px-danger round"
             type="text"
             placeholder="Name"
             name="name"
@@ -127,7 +127,7 @@ function AddUser() {
           </div>
           <input
             style={{ width: "-webkit-fill-available" }}
-            className="input"
+            className="form-control input"
             type="email"
             placeholder="Email"
             name="email"
@@ -147,7 +147,7 @@ function AddUser() {
           </div>
           <input
             style={{ width: "-webkit-fill-available" }}
-            className="input"
+            className="form-control input"
             type="password"
             placeholder="Password"
             name="password"
@@ -164,7 +164,7 @@ function AddUser() {
         <div className="profile p-1 ">
           <input
            style={{fontSize: "12px"}}
-            className="input"
+            className="form-control input"
             type="file"
             placeholder="Profile"
             name="profile"

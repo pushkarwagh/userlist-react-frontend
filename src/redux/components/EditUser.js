@@ -63,7 +63,7 @@ function EditUser() {
           </div>
           <input
             style={{ width: "-webkit-fill-available" }}
-            className="input border-2px-danger round"
+            className="form-control input border-2px-danger round"
             type="text"
             placeholder="Name"
             name="name"
@@ -78,7 +78,7 @@ function EditUser() {
           </div>
           <input
             style={{ width: "-webkit-fill-available" }}
-            className="input"
+            className="form-control input"
             type="email"
             placeholder="Email"
             name="email"
@@ -94,7 +94,7 @@ function EditUser() {
             </div>
             <input
               style={{ width: "-webkit-fill-available" }}
-              className="input"
+              className="form-control input"
               type="password"
               placeholder="Pasword"
               name="password"
@@ -108,7 +108,7 @@ function EditUser() {
 
         <div className="form-check">
           <input
-            className="form-check-input"
+            className="form-control form-check-input"
             type="checkbox"
             value=""
             id="flexCheckIndeterminate"
