@@ -108,7 +108,7 @@ function EditUser() {
 
         <div className="form-check">
           <input
-            className="form-control form-check-input"
+            className=" form-check-input"
             type="checkbox"
             value=""
             id="flexCheckIndeterminate"
