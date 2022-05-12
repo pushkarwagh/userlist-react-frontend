@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { FaUserCircle, FaUserPlus } from "react-icons/fa";
@@ -9,6 +9,7 @@ import { addUser } from "../operations/operations";
 function AddUser() {
   const { id } = useParams();
   const loggedInUser = useLocation();
+  const ref= useRef();
   const dispatch = useDispatch();
 
   const [user, setUser] = useState({
@@ -64,6 +65,7 @@ function AddUser() {
       formData.append("profile", profile);
       const res = await dispatch(addUser(formData, id));
       if (res.addNew) {
+        ref.current.value="";
         setProfile("");
         setUser({
           name: "",
@@ -179,6 +181,7 @@ function AddUser() {
               placeholder="Profile"
               name="profile"
               filename="profile"
+              ref={ref}
               onChange={selectProfile}
             />
           </div>

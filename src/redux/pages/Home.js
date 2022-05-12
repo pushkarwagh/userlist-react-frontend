@@ -84,7 +84,7 @@ function Home() {
               </>
             ) : (
               <div className="spinner">
-                
+
               </div>
             )}
           </div>
