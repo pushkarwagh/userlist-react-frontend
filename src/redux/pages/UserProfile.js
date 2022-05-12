@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaUserCircle } from "react-icons/fa";
 
 import { updateProfile } from "../operations/operations";
-import { BiLoader } from "react-icons/bi";
 
 function UserProfile() {
   const { user, loading } = useSelector((state) => state.getUser);
