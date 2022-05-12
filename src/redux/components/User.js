@@ -16,7 +16,7 @@ function User() {
 
   useEffect(() => {
     setState(user);
-  }, []);
+  }, [user]);
 
   return (
     <>
