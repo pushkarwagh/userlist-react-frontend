@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaUserCircle } from "react-icons/fa";
 
 import { updateProfile } from "../operations/operations";
 
 function UserProfile() {
+  const ref = useRef();
   const { user, loading } = useSelector((state) => state.getUser);
   const dispatch = useDispatch();
 
@@ -28,6 +29,7 @@ function UserProfile() {
       if (res.editProfile) {
         setState({ ...user, profile: user.profile });
         setNewProfile("");
+        ref.current.value="";
       }
     }
   };
@@ -66,6 +68,7 @@ function UserProfile() {
               placeholder="Profile"
               name="profile"
               filename="profile"
+              ref={ref}
               onChange={selectProfile}
               style={{ font: "-webkit-small-control" }}
             />
