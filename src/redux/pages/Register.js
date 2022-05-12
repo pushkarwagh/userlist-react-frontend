@@ -37,7 +37,7 @@ function Register() {
     e.preventDefault();
 
     const { name, email, password } = user;
-    const emailCheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+    const emailCheck = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
       email
     );
     if (name === "") {
