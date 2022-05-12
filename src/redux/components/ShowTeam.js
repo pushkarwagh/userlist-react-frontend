@@ -10,9 +10,9 @@ import { deleteUser, getTeam } from "../operations/operations";
 function ShowTeam() {
   const { id } = useParams();
   const loggedInUser = useLocation();
-  const users = useSelector((state) => state.getTeam.users);
+  const { users, loading } = useSelector((state) => state.getTeam);
   const teamMembers = Array.from(users);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const deleteUserAccount = async (userId) => {
     const res = await dispatch(deleteUser(userId));
@@ -29,62 +29,69 @@ function ShowTeam() {
           <FaUserCircle /> {loggedInUser.state.data}
         </h3>
       </div>
- { teamMembers.length > 0 && 
-      <Table
-        striped
-        bordered
-        hover
-        variant="light"
-        style={{ overflowWrap: "anywhere" }}
-      >
-        <thead>
-          <tr>
-            <th scope="col-2">Id</th>
-            <th scope="col-2">Profile</th>
-            <th scope="col">Name</th>
-            <th scope="col-2">Email</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {teamMembers &&
-            teamMembers.map((user, i) => {
-              return (
-                <tr key={i}>
-                  <td>{user._id}</td>
-
-                  <td>
-                    <img
-                      className="shadow rounded"
-                      src={user.profile == "" ? <FaUserAlt /> : user.profile}
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                  </td>
-
-                  <td>
-                    <MdAccountBox /> {user.name}
-                  </td>
-
-                  <td>
-                    <strong>{user.email}</strong>
-                  </td>
-
-                  <td>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => deleteUserAccount(user._id)}
-                    >
-                      {" "}
-                      <MdDelete />
-                      Account
-                    </button>
-                  </td>
+      {!loading ? (
+        <>
+          {teamMembers.length > 0 && (
+            <Table
+              striped
+              bordered
+              hover
+              variant="light"
+              style={{ overflowWrap: "anywhere" }}
+            >
+              <thead>
+                <tr>
+                  <th scope="col-2">Id</th>
+                  <th scope="col-2">Profile</th>
+                  <th scope="col">Name</th>
+                  <th scope="col-2">Email</th>
+                  <th scope="col">Actions</th>
                 </tr>
-              ); //return close...
-            })}
-        </tbody>
-      </Table>
-         }
+              </thead>
+              <tbody>
+                {teamMembers &&
+                  teamMembers.map((user, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{user._id}</td>
+
+                        <td>
+                          <img
+                            src={ user.profile}
+                            alt="user"
+                            className="shadow rounded"
+                            style={{ width: "50px", height: "50px" }}
+                          />
+                        </td>
+
+                        <td>
+                          <MdAccountBox /> {user.name}
+                        </td>
+
+                        <td>
+                          <strong>{user.email}</strong>
+                        </td>
+
+                        <td>
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => deleteUserAccount(user._id)}
+                          >
+                            {" "}
+                            <MdDelete />
+                            Account
+                          </button>
+                        </td>
+                      </tr>
+                    ); //return close...
+                  })}
+              </tbody>
+            </Table>
+          )}
+        </>
+      ) : (
+        <div className="spinner"></div>
+      )}
     </div>
   );
 }

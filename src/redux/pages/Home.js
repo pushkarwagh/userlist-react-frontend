@@ -6,16 +6,15 @@ import { getAll } from "../operations/operations";
 import UserTableRow from "../components/UsersTable";
 
 function Home() {
-  const users = useSelector((state) => state.getAllUsers.users);
+  const { users, loading } = useSelector((state) => state.getAllUsers);
   const loginUser = useSelector((state) => state.login.users);
   const dispatch = useDispatch();
 
   const neUser = Array.from(users);
 
-  useEffect(() => {    
-    dispatch(getAll())    
-  },[])
-  
+  useEffect(() => {
+    dispatch(getAll());
+  }, []);
 
   const [filterList, setFilterList] = useState(neUser);
 
@@ -31,7 +30,7 @@ function Home() {
     setFilterList(filteredValues);
   };
 
- return (
+  return (
     <>
       {loginUser.isAdmin ? (
         <div className="main">
@@ -40,46 +39,53 @@ function Home() {
             style={{ height: "100px" }}
           >
             <div>USER'S-LIST</div>
-
           </div>
 
-          <div className="user-table " >
+          <div className="user-table ">
             <input
               className="my-1 shadow border border-none"
               type="search"
               placeholder="Search user"
               onChange={handleSearch}
             />
-            {users.length > 0 ? (
-              <Table
-                striped
-                bordered
-                hover
-                variant="light"
-                style={{ overflowWrap: "anywhere"}}
-              >
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th scope="col-2">Id</th>
-                    <th scope="col-2">Image</th>
-                    <th scope="col">Name</th>
-                    <th scope="col-2">Email</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                {/* <tbody> */}
-                  {filterList &&
-                    filterList.map((user, i) => {
-                      if (user.leadId == 0)
-                        return (
-                          <UserTableRow key={i} index={i + 1} user={user} />
-                        );
-                    })}
-                {/* </tbody> */}
-              </Table>
+            {!loading ? (
+              <>
+                {users.length > 0 ? (
+                  <Table
+                    striped
+                    bordered
+                    hover
+                    variant="light"
+                    style={{ overflowWrap: "anywhere" }}
+                  >
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th scope="col-2">Id</th>
+                        <th scope="col-2">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col-2">Email</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    {/* <tbody> */}
+                    {filterList &&
+                      filterList.map((user, i) => {
+                        if (user.leadId == 0)
+                          return (
+                            <UserTableRow key={i} index={i + 1} user={user} />
+                          );
+                      })}
+                    {/* </tbody> */}
+                  </Table>
+                ) : (
+                  <h3 className="text-center text-warning"> No users yEt!? </h3>
+                )}
+              </>
             ) : (
-              <h3 className="text-center text-warning"> No users yEt!? </h3>
+              <div className="spinner">
+                
+              </div>
             )}
           </div>
         </div>

@@ -34,3 +34,19 @@ tr.expandable > td > .inner {
   margin: 10px;
   overflow: hidden;
 }
+
+.spinner {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 50px auto;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  border-top-color: #00b7ffc9;
+  animation: spinner 1s ease infinite;
+}
+@keyframes spinner {
+  to {
+    -webkit-transform: rotateZ(360deg);
+  }
+}
