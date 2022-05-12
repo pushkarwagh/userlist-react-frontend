@@ -20,7 +20,7 @@ function UserTableRow({ user }) {
   const neUser = Array.from(users);
 
   useEffect(() => {
-    const filteredValues = neUser.filter((item) => item.leadId == user._id);
+    const filteredValues = neUser.filter((item) => item.leadId === user._id);
     setFilterTeam(filteredValues);
   }, []);
 
@@ -94,9 +94,9 @@ function UserTableRow({ user }) {
                     <td scope="col-2">{user._id}</td>
 
                     <td scope="col-2">
-                      <img
-                        className="shadow rounded"
+                      <img 
                         src={user.profile == "" ? <FaUserAlt /> : user.profile}
+                        className="shadow rounded"
                         style={{ width: "50px", height: "50px" }}
                       />
                     </td>

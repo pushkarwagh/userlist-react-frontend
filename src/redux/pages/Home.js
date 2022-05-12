@@ -43,7 +43,7 @@ function Home() {
 
           </div>
 
-          <div className="user-table ">
+          <div className="user-table " >
             <input
               className="my-1 shadow border border-none"
               type="search"
@@ -56,7 +56,7 @@ function Home() {
                 bordered
                 hover
                 variant="light"
-                style={{ overflowWrap: "anywhere" }}
+                style={{ overflowWrap: "anywhere"}}
               >
                 <thead>
                   <tr>

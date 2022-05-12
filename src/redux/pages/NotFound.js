@@ -23,7 +23,7 @@ function NotFound() {
       <h3 style={{ color: "#008080" }}>
         Please,
         <Link to="/login" style={{ textDecoration: "none", color: "#008080" }}>
-          Log_In!!!!
+          Log In!!!!
         </Link>
         </h3>
         : <h3 style={{ color: "#008080" }}> Something went wrong  </h3>
